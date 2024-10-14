@@ -55,24 +55,23 @@ def userno(message):
 def start(message):
     owner = message.chat.id
     db_user.add_user(owner)
-    msg = f"""Welcome to Health Tracker AI *{message.chat.first_name}*!!!
-    
-We offer a wide range of health tracking system right from your telegram app to help you diagnose and keep track of everything health related
-
-Keep fit and stay healthy with Tracker AI
+    msg = f"""Welcome to NexTAO
+Layer 2 Solution for Bittensor Network Transforming Healthcare through AI Blockchain, NexTAO is poised to transform the healthcare landscape, elevating the standard of care for patients worldwide and fostering a new era of medical innovation.
     """
     markup = quick_markup({
-        'Health AI chat bot' : {'callback_data' : 'chatbot'},
-        "Health Record" : {'callback_data' : 'record'},
-        "HealthCare Connect/Data" : {'callback_data' : 'connect'},
+        'HealthCare Chat' : {'callback_data' : 'chatbot'},
+        "Report Scanner" : {'callback_data' : 'record'},
+        "Market Data Place" : {'callback_data' : 'connect'},
         "Health Products" : {'callback_data' : 'products'}
     })
-    bot.send_message(owner, msg, reply_markup=markup)
+    photo = open('welcome.jpg', 'rb')
+    bot.send_photo(owner, photo=photo, caption=msg, reply_markup=markup)
+    
     
 
 def product(message):
     owner = message.chat.id
-    msg = """Welcome to Tracker AI stores
+    msg = """Welcome to NexTao stores
     
 We have a wide range of products for you to choose from to track and monitor your health status.
 
@@ -104,7 +103,8 @@ def call_handler(call):
         bot.send_message(owner, "Talk to the bot about health related matters")
         
     elif call.data == 'connect':
-        msg = "Welcome to Tracker AI healthcare connect where we give you special access to health records and specialized doctors to help you right from your telegram.\nWhether you're a Users, Doctor, or Developer looking to work with us, Our rich-culture environment makes it all easy as we prioritize the best among others in terms of HealthCare Data to provide you all you need.\nTo Procced, use any of the buttons below to connect with us..."
+        msg = "NexTAO Built on a blockchain network, NexTAO ensures that healthcare data is safely stored and shared, It’s designed to handle large amounts of data while keeping it secure, This marketplace connects patients, doctors, researchers, and AI developers, enabling them to collaborate without risking privacy."
+        
         markup = quick_markup({
             'Users' : {'callback_data' : 'Users'}, 
             'Doctors' : {'callback_data' : 'doctor'},
